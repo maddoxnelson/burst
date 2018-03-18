@@ -1,0 +1,8 @@
+{
+  "name": "burst",
+  "version": "0.0.1",
+  "description": "Node app allowing users to write, edit and share pieces of flash fiction.",
+  "repository": "https://github.com/maddoxnelson/burst",
+  "author": "Matt Nelson",
+  "license": "MIT"
+}
