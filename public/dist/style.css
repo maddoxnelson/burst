@@ -1,0 +1,25 @@
+/* Coolors Exported Palette - coolors.co/11270b-71b340-e3edd9-598b2c-a6b494 */
+/* HSL */
+html {
+  font-size: 10px; }
+
+body {
+  background: #e3edd9; }
+
+.flex-container-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+.flex-container-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }

@@ -23,7 +23,7 @@ const postcss = {
 const styles = {
   test: /\.(scss)$/,
   use: ExtractTextPlugin.extract(
-    ['css-loader?sourceMap', postcss, 'sass-loader?sourceMap']
+    ['css-loader', postcss, 'sass-loader']
   )
 };
 
@@ -35,7 +35,6 @@ const config = {
   entry: {
     App: './public/javascripts/burst.js'
   },
-  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: '[name].bundle.js'
