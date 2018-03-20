@@ -1,4 +1,8 @@
 extends layout
 
+include mixins/_burstCard
+
 block content
-  h1= title
+  .inner
+    h1= title
+    +burstCard()

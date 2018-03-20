@@ -1,0 +1,14 @@
+nav {
+  border: 1px solid red;
+  background: $dark-green;
+
+  a {
+    color: white;
+  }
+
+  li {
+    width: 100px;
+    list-style-type: none;
+    text-align: center;
+  }
+}

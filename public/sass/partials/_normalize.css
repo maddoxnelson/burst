@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $accent-green;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

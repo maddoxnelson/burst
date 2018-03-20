@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const javascript = {
   test: /\.(js)$/,
@@ -44,6 +45,12 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin('style.css'),
+    new GoogleFontsPlugin({
+			fonts: [
+				{ family: "Medula One" },
+				{ family: "Abel" }
+			]
+		})
   ]
 };
 
