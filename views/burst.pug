@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_burstCard
+
+block content
+  .inner
+    .card-wrapper.flex-container-row.justify-space-between.flex-wrap
+      .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
+        h1.flex-container-row.justify-center= title
+        h2.flex-container-row.justify-center= burst.author
+        p= burst.content
+    //- pre= h.dump(burst)
