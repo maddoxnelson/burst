@@ -10,6 +10,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 // import models here
+require('./models/Burst');
 
 // fire it up
 const app = require('./app');
