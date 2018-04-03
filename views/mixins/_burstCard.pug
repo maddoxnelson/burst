@@ -1,7 +1,8 @@
 mixin burstCard(burst = {})
   .burst.card.shaded
+    div.flex-container-row.justify-center
+      img(src=`/images/icons/${burst.genre === 'tragedy' ? 'tragedy' : 'comedy'}.svg` width="50px" height="50px")
     h2.flex-container-row.justify-center.txt-center
       a(href=`burst/${burst.slug}`) #{burst.name}
     h3.flex-container-row.justify-center= burst.author
     p= burst.content
-    textarea= h.dump(burst)

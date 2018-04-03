@@ -6,7 +6,9 @@ block content
   .inner
     .card-wrapper.flex-container-row.justify-space-between.flex-wrap
       .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
-        h1.flex-container-row.justify-center= title
+        div.flex-container-row.justify-center
+          img(src=`/images/icons/${burst.genre === 'tragedy' ? 'tragedy' : 'comedy'}.svg` width="50px" height="50px")
+        h1.flex-container-row.justify-center= burst.genre
         h2.flex-container-row.justify-center= burst.author
         p= burst.content
     //- pre= h.dump(burst)
