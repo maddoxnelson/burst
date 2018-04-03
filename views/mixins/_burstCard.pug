@@ -4,3 +4,4 @@ mixin burstCard(burst = {})
       a(href=`burst/${burst.slug}`) #{burst.name}
     h3.flex-container-row.justify-center= burst.author
     p= burst.content
+    textarea= h.dump(burst)
