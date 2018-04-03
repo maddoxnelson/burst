@@ -16,27 +16,11 @@ const burstSchema = new mongoose.Schema({
   content: {
     type: String,
     required: 'Go on... write!'
-  }
-  /**
-  genre: {
-    type: ['comedy', 'drama'],
-    required: 'Choose a genre.'
   },
-  location: {
-    type: {
-      type: String,
-      default: 'Point'
-    },
-    setting: [{
-      type: Number,
-      required: 'You must supply coordinates!'
-    }],
-    address: {
-      type: String,
-      required: 'You must supply an address'
-    }
+  genre: {
+    type: String,
+    required: 'Choose a genre.'
   }
-  **/
 });
 
 burstSchema.pre('save', async function(next) {

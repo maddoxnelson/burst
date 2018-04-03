@@ -6,4 +6,9 @@ mixin burstForm(burst = {})
     input(type="text" name="author" value=burst.author)
     label(for="content") Content
     textarea(name="content")= burst.content
+    label(for="genre") Genre
+    input(type="radio" name="genre" value="comedy")
+    | Comedy
+    input(type="radio" name="genre" value="tragedy")
+    | Tragedy
     input(type="submit" value="Save" class="button")
