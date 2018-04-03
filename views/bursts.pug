@@ -5,4 +5,6 @@ include mixins/_burstCard
 block content
   .inner
     h1= title
-    +burstCard()
+    .card-wrapper.flex-container-row.justify-space-between.flex-wrap
+      each burst in bursts
+        +burstCard(burst)

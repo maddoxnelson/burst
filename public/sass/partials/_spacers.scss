@@ -1,0 +1,21 @@
+$spaced-lg: 20px;
+$spaced-md: 15px;
+$spaced-sm: 10px;
+
+.spaced {
+
+  &.spaced-top {
+
+    &.spaced-lg {
+      margin-top: $spaced-lg;
+    }
+
+    &.spaced-md {
+      margin-top: $spaced-md;
+    }
+
+    &.spaced-sm {
+      margin-top: $spaced-sm;
+    }
+  }
+}
