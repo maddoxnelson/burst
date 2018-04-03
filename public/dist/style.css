@@ -7,7 +7,7 @@ a {
   text-decoration: none;
   cursor: pointer; }
   a:hover {
-    color: #73b441; }
+    color: #b6c683; }
 
 * {
   -webkit-box-sizing: border-box;
@@ -19,7 +19,9 @@ a {
   width: calc(33.33333333% - 20px);
   line-height: 25px;
   font-size: 20px;
-  background: #e3edd9; }
+  background: #e3edd9;
+  -ms-flex-item-align: start;
+      align-self: flex-start; }
   .card.shaded {
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
@@ -32,7 +34,7 @@ a {
 
 body {
   font-family: "Abel", sans-serif;
-  background: #a5b493; }
+  background: #4f4f4c; }
 
 .inner {
   padding: 0 20px; }
@@ -83,7 +85,7 @@ body {
 
 nav {
   border: 1px solid red;
-  background: #11280b; }
+  background: #4f4f4c; }
   nav a {
     color: white; }
   nav li {
