@@ -2,8 +2,6 @@ mixin burstForm(burst = {})
   form(action=`/write/${burst._id || ''}` method="POST" class="card")
     label(for="name") Title
     input(type="text" name="name" value=burst.name)
-    label(for="author") Author
-    input(type="text" name="author" value=burst.author)
     label(for="content") Content
     textarea(name="content")= burst.content
     label(for="genre") Genre

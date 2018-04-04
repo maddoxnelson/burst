@@ -5,6 +5,7 @@ const md5 = require('md5');
 const validator = require("validator");
 const mongodbErrorHandler = require("mongoose-mongodb-errors");
 const passportLocalMongoose = require("passport-local-mongoose");
+const slug = require('slugs');
 
 const userSchema = new Schema({
   email: {
@@ -20,6 +21,7 @@ const userSchema = new Schema({
     required: 'Please supply a name',
     trim: true
   },
+  slug: String,
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });
@@ -33,6 +35,26 @@ userSchema.virtual('gravatar').get(function() {
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
+
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('name')) {
+    console.log('checking for modification... finding an identical one')
+    return next(); // move along, don't redo the slug if name hasn't changed
+  }
+  // slugifies the name
+  this.slug = slug(this.name);
+  // find other stores with similar slug or slug-1
+  const slugRegex = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+  const usersWithSlug = await this.constructor.find({ slug: slugRegex });
+
+  if(usersWithSlug.length) {
+    this.slug = `${this.slug}-${usersWithSlug.length + 1}`;
+  }
+
+  // moves things along to the next part
+  next();
+
+});
 
 
 module.exports = mongoose.model('User', userSchema);
