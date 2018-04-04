@@ -8,12 +8,15 @@ mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 // import all of our models - they need to be imported only once
 
 const Burst = require('../models/Burst');
+const User = require('../models/User');
 
 const bursts = JSON.parse(fs.readFileSync(__dirname + '/bursts.json', 'utf-8'));
+const users = JSON.parse(fs.readFileSync(__dirname + '/users.json', 'utf-8'));
 
 async function deleteData() {
   console.log('😢😢 Goodbye Data...');
   await Burst.remove();
+  await User.remove();
   console.log('Data Deleted. To load sample data, run\n\n\t yarn sample\n\n');
   process.exit();
 }
@@ -21,6 +24,7 @@ async function deleteData() {
 async function loadData() {
   try {
     await Burst.insertMany(bursts);
+    await User.insertMany(users);
     console.log('👍👍👍👍👍👍👍👍 Done!');
     process.exit();
   } catch(e) {

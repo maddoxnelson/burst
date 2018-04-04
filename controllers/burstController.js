@@ -11,7 +11,7 @@ exports.addBurst = (req, res) => {
   res.render('write', { title: 'Write a Burst.' });
 };
 
-exports.getBurstBySlug = async (req, res) => {
+exports.getBurstBySlug = async (req, res, next) => {
   console.log('found funk')
   const burst = await Burst.findOne({ slug: req.params.slug });
 

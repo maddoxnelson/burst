@@ -8,8 +8,15 @@ nav.flex-container-row.justify-space-between
       a(href="/my-bursts" alt="My Bursts") My Bursts
     li 
       a(href="/word-sprint" alt="Word sprint") Word Sprint
-  ul.flex-container-row
-    li
-      a(href="/register" alt="Register") Register
-    li
-      a(href="/login" alt="Login") Login
+  if user
+    ul.flex-container-row
+      li
+        a(href="/my-bursts")= user.name
+      li
+        a(href="/logout" alt="Log out") Log out
+  else
+    ul.flex-container-row
+      li
+        a(href="/register" alt="Register") Register
+      li
+        a(href="/login" alt="Login") Login
