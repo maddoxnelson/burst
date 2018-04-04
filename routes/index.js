@@ -16,6 +16,11 @@ router.post('/write',
   catchErrors(burstController.createBurst)
 );
 
+// Authors
+router.get('/author/:slug',
+  authController.isLoggedIn,
+  burstController.getBurstsByAuthor);
+
 // User and authentication routes
 router.get('/login', userController.loginForm);
 router.get('/register', userController.registerForm);

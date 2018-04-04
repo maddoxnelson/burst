@@ -2,18 +2,21 @@ nav.flex-container-row.justify-space-between
   ul.flex-container-row
     li 
       a(href="/" alt="Home") Home
-    li 
-      a(href="/write" alt="Latest Bursts") Write Burst
-    li 
-      a(href="/my-bursts" alt="My Bursts") My Bursts
-    li 
-      a(href="/word-sprint" alt="Word sprint") Word Sprint
+    if user
+      li 
+        a(href="/write" alt="Latest Bursts") Write Burst
+      li 
+        a(href="/my-bursts" alt="My Bursts") My Bursts
+      li 
+        a(href="/word-sprint" alt="Word sprint") Word Sprint
   if user
     ul.flex-container-row
-      li
-        a(href="/my-bursts")= user.name
-      li
-        a(href="/logout" alt="Log out") Log out
+      
+      ul.flex-container-row
+        li
+          a(href="/my-bursts")= user.name
+        li
+          a(href="/logout" alt="Log out") Log out
   else
     ul.flex-container-row
       li

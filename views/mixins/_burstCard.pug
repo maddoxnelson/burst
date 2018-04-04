@@ -4,5 +4,7 @@ mixin burstCard(burst = {})
       img(src=`/images/icons/${burst.genre === 'tragedy' ? 'tragedy' : 'comedy'}.svg` width="50px" height="50px")
     h2.flex-container-row.justify-center.txt-center
       a(href=`burst/${burst.slug}`) #{burst.name}
-    h3.flex-container-row.justify-center= burst.author
+    h3.flex-container-row.justify-center
+      a(href=`author/${burst.author.slug}`)= burst.author.name
+    //- pre= h.dump(burst)
     p= burst.content

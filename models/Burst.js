@@ -10,8 +10,9 @@ const burstSchema = new mongoose.Schema({
   },
   slug: String,
   author: {
-    type: String,
-    required: 'Enter your name.'
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'You must supply an author'
   },
   content: {
     type: String,
@@ -21,6 +22,9 @@ const burstSchema = new mongoose.Schema({
     type: String,
     required: 'Choose a genre.'
   }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 burstSchema.pre('save', async function(next) {
@@ -42,5 +46,24 @@ burstSchema.pre('save', async function(next) {
   next();
 
 });
+
+burstSchema.statics.getBurstsFromAuthor = function() {
+  return this.aggregate([
+    // Lookup bursts from authors
+    {
+      $lookup: {
+        from: 'author', localField: '_id', foreignField: 'burst', as: 'authors' }
+    },
+    // limit to at most 10
+  ]);
+};
+
+function autopopulate(next) {
+  this.populate('author');
+  next()
+};
+
+burstSchema.pre('find', autopopulate);
+burstSchema.pre('findOne', autopopulate);
 
 module.exports = mongoose.model('Burst', burstSchema);
