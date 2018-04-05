@@ -33,6 +33,17 @@ userSchema.virtual('gravatar').get(function() {
   resetPasswordExpires: Date,`
 });
 
+userSchema.statics.getBurstsFromAuthor = function() {
+  return this.aggregate([
+    // Lookup bursts from authors
+    {
+      $lookup: {
+        from: 'author', localField: '_id', foreignField: 'burst', as: 'authors' }
+    },
+    // limit to at most 10
+  ]);
+};
+
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
 

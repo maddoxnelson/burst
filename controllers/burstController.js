@@ -25,8 +25,3 @@ exports.createBurst = async (req, res) => {
   req.flash('success', `Successfully created ${burst.title}!`);
   res.redirect(`/burst/${burst.slug}`);
 };
-
-exports.getBurstsByAuthor = async (req, res) => {
-  const bursts = await Burst.getBurstsFromAuthor();
-  res.render('author', { title: 'Author page', bursts});
-}
