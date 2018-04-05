@@ -25,3 +25,16 @@ exports.createBurst = async (req, res) => {
   req.flash('success', `Successfully created ${burst.title}!`);
   res.redirect(`/burst/${burst.slug}`);
 };
+
+exports.showBurstsByGenre = async (req, res) => {
+  const genre = req.params.genre;
+  const bursts = await Burst.find({ genre: genre });
+  res.render('bursts', { title: `${genre} bursts`, bursts})
+}
+
+exports.getBurstsByAuthor = async (req, res) => {
+  const user = await User.findOne({ slug: req.params.slug });
+  const bursts = await Burst.find({ author: user._id })
+
+  res.render('author', { title: 'Author page', user, bursts });
+}
