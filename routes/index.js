@@ -3,6 +3,7 @@ const router = express.Router();
 const burstController = require('../controllers/burstController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const authorController = require('../controllers/authorController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 module.exports = router;
@@ -19,7 +20,7 @@ router.post('/write',
 // Authors
 router.get('/author/:slug',
   authController.isLoggedIn,
-  burstController.getBurstsByAuthor);
+  authorController.getBurstsByAuthor);
 
 // User and authentication routes
 router.get('/login', userController.loginForm);

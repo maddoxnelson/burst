@@ -47,17 +47,6 @@ burstSchema.pre('save', async function(next) {
 
 });
 
-burstSchema.statics.getBurstsFromAuthor = function() {
-  return this.aggregate([
-    // Lookup bursts from authors
-    {
-      $lookup: {
-        from: 'author', localField: '_id', foreignField: 'burst', as: 'authors' }
-    },
-    // limit to at most 10
-  ]);
-};
-
 function autopopulate(next) {
   this.populate('author');
   next()
