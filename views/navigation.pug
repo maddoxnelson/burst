@@ -5,8 +5,8 @@ nav.flex-container-row.justify-space-between
     if user
       li 
         a(href="/write" alt="Latest Bursts") Write Burst
-      li 
-        a(href="/my-bursts" alt="My Bursts") My Bursts
+        li
+          a(href=`/author/${user.slug}`) My bursts
       li 
         a(href="/word-sprint" alt="Word sprint") Word Sprint
   if user
@@ -14,7 +14,7 @@ nav.flex-container-row.justify-space-between
       
       ul.flex-container-row
         li
-          a(href="/my-bursts")= user.name
+          a(href=`/author/${user.slug}`)= user.name
         li
           a(href="/logout" alt="Log out") Log out
   else
