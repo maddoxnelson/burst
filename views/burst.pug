@@ -7,7 +7,8 @@ block content
     .card-wrapper.flex-container-row.justify-space-between.flex-wrap
       .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
         div.flex-container-row.justify-center
-          img(src=`/images/icons/${burst.genre === 'tragedy' ? 'tragedy' : 'comedy'}.svg` width="50px" height="50px")
+          a(href=`/bursts/${burst.genre === 'tragedy' ? 'tragedy' : 'comedy'}`)
+            img(src=`/images/icons/${burst.genre === 'tragedy' ? 'tragedy' : 'comedy'}.svg` width="50px" height="50px")
         h1.flex-container-row.justify-center= burst.name
         h2.flex-container-row.justify-center= burst.author.name
         p= burst.content
