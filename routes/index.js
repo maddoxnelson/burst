@@ -3,6 +3,7 @@ const router = express.Router();
 const burstController = require('../controllers/burstController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const wordSprintController = require('../controllers/wordSprintController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 module.exports = router;
@@ -19,6 +20,16 @@ router.post('/write',
 // Genres
 router.get('/genre/:genre',
   catchErrors(burstController.showBurstsByGenre)
+)
+
+// Word sprints
+router.get('/sprint',
+  authController.isLoggedIn,
+  wordSprintController.chooseSprintMode
+)
+
+router.get('/sprint/:mode',
+  wordSprintController.displayMode
 )
 
 // Authors
