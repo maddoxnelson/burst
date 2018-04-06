@@ -60,11 +60,66 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(2);
+
+__webpack_require__(3);
+
+var _timedSprint = __webpack_require__(5);
+
+var _timedSprint2 = _interopRequireDefault(_timedSprint);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _timedSprint2.default)();
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -772,61 +827,6 @@ function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(3);
-
-__webpack_require__(0);
-
-var _timedSprint = __webpack_require__(5);
-
-var _timedSprint2 = _interopRequireDefault(_timedSprint);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _timedSprint2.default)();
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -867,54 +867,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var startSprint = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(duration) {
+var runSprint = function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var time;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return countdown({ length: duration, unit: 'seconds' });
-
-          case 2:
-            console.log('Sprint completed!');
-            console.log('give users 15 seconds to wrap up their thoughts');
-            console.log('Submit a form that contains the burst to autosave it.');
-
-          case 5:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function startSprint(_x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var runSprint = function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var time;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
             time = parseInt(this.dataset.value) * 60;
 
             console.log('Sprint starting in 5 seconds...');
-            _context2.next = 4;
+            _context.next = 4;
             return countdown(5);
 
           case 4:
             console.log(this.dataset.value + ' ' + this.dataset.unit + ' sprint starting!!');
-            _context2.next = 7;
+            _context.next = 7;
             return countdown(time);
 
           case 7:
             console.log('SPRINT COMPLETE! Take 15 seconds to finish your current sentence.');
-            _context2.next = 10;
+            _context.next = 10;
             return countdown(15);
 
           case 10:
@@ -923,14 +896,14 @@ var runSprint = function () {
 
           case 12:
           case 'end':
-            return _context2.stop();
+            return _context.stop();
         }
       }
-    }, _callee2, this);
+    }, _callee, this);
   }));
 
   return function runSprint() {
-    return _ref2.apply(this, arguments);
+    return _ref.apply(this, arguments);
   };
 }();
 
@@ -940,14 +913,28 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var promisify = __webpack_require__(6);
 
+function strPadLeft(string, pad, length) {
+  return (new Array(length + 1).join(pad) + string).slice(-length);
+}
+
+function updateClock(time) {
+  var countdownClock = document.querySelector('#clock');
+  var min = Math.floor(time / 60);
+  var sec = time - min * 60;
+  var formattedTime = strPadLeft(min, '0', 1) + ':' + strPadLeft(sec, '0', 2);
+  countdownClock.innerText = formattedTime;
+}
+
 function countdown() {
   var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+
 
   var ms = duration * 1000;
   var ticker = duration - 1;
 
   var clock = setInterval(function () {
-    console.log(ticker--);
+    updateClock(ticker);
+    ticker--;
   }, 1000);
 
   return new Promise(function (resolve) {
@@ -961,7 +948,6 @@ function countdown() {
 
 function init() {
   var timedBtns = [].concat(_toConsumableArray(document.querySelectorAll('.timed-sprint')));
-
   timedBtns.forEach(function (btn) {
     return btn.addEventListener('click', runSprint);
   });
@@ -1144,7 +1130,7 @@ module.exports = function () {
     //  Otherwise, return the es6-promise polyfill by @jaffathecake.
     return __webpack_require__(8).Promise;
 }();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 8 */
@@ -2326,7 +2312,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 //# sourceMappingURL=es6-promise.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(0)))
 
 /***/ }),
 /* 9 */
