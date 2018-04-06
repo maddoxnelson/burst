@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 require('dotenv').config({ path: 'variables.env' });
+require("babel-core/register");
+require("babel-polyfill");
 
 mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;

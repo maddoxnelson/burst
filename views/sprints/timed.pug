@@ -1,0 +1,13 @@
+extends ../layout
+
+include ../mixins/_button
+
+block content
+  .inner.flex-container-column.justify-center
+    h1= title
+    .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
+      ol
+        li Pick a time
+          +button('1', 'minute', 'timed-sprint')
+          +button('5', 'minutes', 'timed-sprint')
+          +button('10', 'minutes', 'timed-sprint')
