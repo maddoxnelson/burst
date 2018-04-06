@@ -1,11 +1,25 @@
 const promisify = require('es6-promisify');
 
+function strPadLeft(string, pad, length) {
+  return (new Array(length+1).join(pad)+string).slice(-length);
+}
+
+function updateClock(time) {
+  const countdownClock = document.querySelector('#clock');
+  let min = Math.floor(time / 60);
+  let sec = time - min * 60;
+  let formattedTime = `${strPadLeft(min, '0', 1)}:${strPadLeft(sec, '0', 2)}`;
+  countdownClock.innerText = formattedTime;
+}
+
 function countdown(duration = 5) {
+
   const ms = duration * 1000;
   let ticker = duration - 1;
 
   const clock = setInterval(() => {
-    console.log(ticker--);
+    updateClock(ticker);
+    ticker--;
   }, 1000);
 
   return new Promise(resolve => {
@@ -15,13 +29,6 @@ function countdown(duration = 5) {
       resolve('resolved');
     }, ms);
   });
-}
-
-async function startSprint(duration) {
-  await countdown({ length: duration, unit: 'seconds' });
-  console.log('Sprint completed!')
-  console.log('give users 15 seconds to wrap up their thoughts')
-  console.log('Submit a form that contains the burst to autosave it.')
 }
 
 async function runSprint() {
@@ -38,7 +45,6 @@ async function runSprint() {
 
 function init() {
   const timedBtns = [...document.querySelectorAll('.timed-sprint')];
-
   timedBtns.forEach(btn => btn.addEventListener('click', runSprint));
 }
 

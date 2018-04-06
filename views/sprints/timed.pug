@@ -1,13 +1,24 @@
 extends ../layout
 
 include ../mixins/_button
+include ../mixins/_clock
+include ../mixins/_burstForm
 
 block content
-  .inner.flex-container-column.justify-center
+  .inner
     h1= title
+  .inner.flex-container-row.justify-space-around
     .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
       ol
         li Pick a time
           +button('1', 'minute', 'timed-sprint')
           +button('5', 'minutes', 'timed-sprint')
           +button('10', 'minutes', 'timed-sprint')
+    .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
+      +clock()
+  .inner
+    .card-wrapper.flex-container-row.justify-space-between.flex-wrap
+      .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
+        div.flex-container-row.justify-center
+          //- TODO from will need to be modified to work perfectly with a sprint
+          +burstForm()
