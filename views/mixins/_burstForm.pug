@@ -1,5 +1,5 @@
 mixin burstForm(burst = {})
-  form(action=`/write/${burst._id || ''}` method="POST" class="card")
+  form(id="burst" action=`/write/${burst._id || ''}` method="POST" class="card")
     label(for="name") Title
     input(type="text" name="name" value=burst.name)
     label(for="content") Content

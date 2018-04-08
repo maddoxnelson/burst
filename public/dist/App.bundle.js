@@ -891,7 +891,7 @@ var runSprint = function () {
             return countdown(15);
 
           case 10:
-            console.log('Save word sprint by submitting form.');
+            submitForm();
             console.log('Display stats on the next page');
 
           case 12:
@@ -915,6 +915,11 @@ var promisify = __webpack_require__(6);
 
 function strPadLeft(string, pad, length) {
   return (new Array(length + 1).join(pad) + string).slice(-length);
+}
+
+function submitForm() {
+  var form = document.querySelector('#burst');
+  form.submit();
 }
 
 function updateClock(time) {

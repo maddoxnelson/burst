@@ -4,6 +4,11 @@ function strPadLeft(string, pad, length) {
   return (new Array(length+1).join(pad)+string).slice(-length);
 }
 
+function submitForm() {
+  const form = document.querySelector('#burst');
+  form.submit();
+}
+
 function updateClock(time) {
   const countdownClock = document.querySelector('#clock');
   let min = Math.floor(time / 60);
@@ -39,7 +44,7 @@ async function runSprint() {
   await countdown(time);
   console.log('SPRINT COMPLETE! Take 15 seconds to finish your current sentence.')
   await countdown(15);
-  console.log('Save word sprint by submitting form.')
+  submitForm();
   console.log('Display stats on the next page')
 }
 
