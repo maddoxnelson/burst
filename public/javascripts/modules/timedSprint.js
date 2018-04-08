@@ -1,4 +1,4 @@
-const promisify = require('es6-promisify');
+import submitForm from './sprintHelpers';
 
 function strPadLeft(string, pad, length) {
   return (new Array(length+1).join(pad)+string).slice(-length);
@@ -39,7 +39,7 @@ async function runSprint() {
   await countdown(time);
   console.log('SPRINT COMPLETE! Take 15 seconds to finish your current sentence.')
   await countdown(15);
-  console.log('Save word sprint by submitting form.')
+  submitForm();
   console.log('Display stats on the next page')
 }
 

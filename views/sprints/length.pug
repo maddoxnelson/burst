@@ -1,4 +1,24 @@
 extends ../layout
 
+include ../mixins/_button
+include ../mixins/_wordCounter
+include ../mixins/_burstForm
+
 block content
-  h1= title
+  .inner
+    h1= title
+  .inner.flex-container-row.justify-space-around
+    .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
+      ol
+        li Pick a length
+          +button('100', 'words', 'length-sprint')
+          +button('500', 'words', 'length-sprint')
+          +button('1000', 'words', 'length-sprint')
+    .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
+      +wordCounter()
+  .inner
+    .card-wrapper.flex-container-row.justify-space-between.flex-wrap
+      .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
+        div.flex-container-row.justify-center
+          //- TODO from will need to be modified to work perfectly with a sprint
+          +burstForm()
