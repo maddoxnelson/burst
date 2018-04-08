@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   padding: 20px;
   margin-bottom: 40px;
   width: calc(33.33333333% - 20px);
@@ -9,6 +10,10 @@
 
   &.shaded {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+
+  &.gradient {
+    background: linear-gradient(to bottom, $lightest-green 80%, $dark-green 120%);
   }
 
   &-full {
