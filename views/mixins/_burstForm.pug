@@ -3,7 +3,7 @@ mixin burstForm(burst = {})
     label(for="name") Title
     input(type="text" name="name" value=burst.name)
     label(for="content") Content
-    textarea(name="content")= burst.content
+    textarea(id="burst-content" name="content")= burst.content
     label(for="genre") Genre
     input(type="radio" name="genre" value="comedy")
     | Comedy

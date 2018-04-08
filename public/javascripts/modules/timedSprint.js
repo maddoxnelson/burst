@@ -1,12 +1,7 @@
-const promisify = require('es6-promisify');
+import submitForm from './sprintHelpers';
 
 function strPadLeft(string, pad, length) {
   return (new Array(length+1).join(pad)+string).slice(-length);
-}
-
-function submitForm() {
-  const form = document.querySelector('#burst');
-  form.submit();
 }
 
 function updateClock(time) {
