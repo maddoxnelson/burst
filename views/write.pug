@@ -5,4 +5,6 @@ include mixins/_burstForm
 block content
   .inner
     h1= title
+    pre= h.dump(res)
     +burstForm(burst)
+    

@@ -73,12 +73,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.submitForm = submitForm;
+exports.validate = validate;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function submitForm() {
   var form = document.querySelector('#burst');
   form.submit();
 }
 
-exports.default = submitForm;
+function validate() {
+  var genreBtns = [].concat(_toConsumableArray(document.querySelectorAll('[name="genre"]')));
+  var genreChecked = genreBtns.filter(function (btn) {
+    return btn.checked;
+  }).length > 0;
+  var title = document.querySelector('#burst-title').value.length > 0;
+  return title && genreChecked;
+}
 
 /***/ }),
 /* 1 */
@@ -99,10 +111,15 @@ var _lengthSprint = __webpack_require__(6);
 
 var _lengthSprint2 = _interopRequireDefault(_lengthSprint);
 
+var _editorHelpers = __webpack_require__(7);
+
+var _editorHelpers2 = _interopRequireDefault(_editorHelpers);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _timedSprint2.default)();
 (0, _lengthSprint2.default)();
+(0, _editorHelpers2.default)();
 
 /***/ }),
 /* 2 */
@@ -866,27 +883,34 @@ var runSprint = function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            if (!(0, _sprintHelpers.validate)()) {
+              _context.next = 15;
+              break;
+            }
+
             time = parseInt(this.dataset.value) * 60;
 
             console.log('Sprint starting in 5 seconds...');
-            _context.next = 4;
+            _context.next = 5;
             return countdown(5);
 
-          case 4:
+          case 5:
             console.log(this.dataset.value + ' ' + this.dataset.unit + ' sprint starting!!');
-            _context.next = 7;
+            _context.next = 8;
             return countdown(time);
 
-          case 7:
+          case 8:
             console.log('SPRINT COMPLETE! Take 15 seconds to finish your current sentence.');
-            _context.next = 10;
+            _context.next = 11;
             return countdown(15);
 
-          case 10:
-            (0, _sprintHelpers2.default)();
+          case 11:
+            (0, _sprintHelpers.submitForm)();
             console.log('Display stats on the next page');
+            _context.next = 15;
+            break;
 
-          case 12:
+          case 15:
           case 'end':
             return _context.stop();
         }
@@ -900,10 +924,6 @@ var runSprint = function () {
 }();
 
 var _sprintHelpers = __webpack_require__(0);
-
-var _sprintHelpers2 = _interopRequireDefault(_sprintHelpers);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -968,25 +988,26 @@ Object.defineProperty(exports, "__esModule", {
 
 var _sprintHelpers = __webpack_require__(0);
 
-var _sprintHelpers2 = _interopRequireDefault(_sprintHelpers);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+console.log(_sprintHelpers.validate);
 
 function checkWordCount(el) {
   return el.value.split(' ').length - 1;
 }
 
 function runSprint() {
-  var contentInput = document.querySelector('#burst-content');
-  var wordLimit = parseInt(this.dataset.value);
-  var numberWords = contentInput.addEventListener('keyup', function (e) {
+  if ((0, _sprintHelpers.validate)()) {
+    console.log('running!');
+    var contentInput = document.querySelector('#burst-content');
+    var wordLimit = parseInt(this.dataset.value);
+    var numberWords = contentInput.addEventListener('keyup', function (e) {
 
-    if (checkWordCount(e.target) > wordLimit) {
-      (0, _sprintHelpers2.default)();
-    }
-  });
+      if (checkWordCount(e.target) > wordLimit) {
+        (0, _sprintHelpers.submitForm)();
+      }
+    });
+  }
 }
 
 function init() {
@@ -1001,6 +1022,38 @@ function lengthSprint() {
 }
 
 exports.default = lengthSprint;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function autosize(el) {
+  console.log(el);
+  el.style.height = el.scrollHeight + 'px';
+}
+
+function expandTextArea() {
+  var textareas = [].concat(_toConsumableArray(document.querySelectorAll('textarea')));
+  textareas.forEach(function (area) {
+    return autosize(area);
+  });
+  textareas.forEach(function (area) {
+    return area.addEventListener('keydown', function (e) {
+      autosize(e.target);
+    });
+  });
+}
+
+exports.default = expandTextArea;
 
 /***/ })
 /******/ ]);
