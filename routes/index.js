@@ -11,10 +11,16 @@ module.exports = router;
 router.get('/', catchErrors(burstController.getBursts));
 router.get('/write', burstController.addBurst);
 
+router.get('/bursts/:id/edit',catchErrors(burstController.editBurst));
+
 router.get(`/burst/:slug`, catchErrors(burstController.getBurstBySlug));
 
 router.post('/write',
   catchErrors(burstController.createBurst)
+);
+
+router.post('/write/:id',
+  catchErrors(burstController.updateBurst)
 );
 
 // Genres

@@ -1,12 +1,26 @@
 mixin burstForm(burst = {})
-  form(id="burst" action=`/write/${burst._id || ''}` method="POST" class="card")
-    label(for="name") Title
-    input(type="text" name="name" value=burst.name)
-    label(for="content") Content
-    textarea(id="burst-content" name="content")= burst.content
-    label(for="genre") Genre
-    input(type="radio" name="genre" value="comedy")
-    | Comedy
-    input(type="radio" name="genre" value="tragedy")
-    | Tragedy
-    input(type="submit" value="Save" class="button")
+  .card-wrapper.card.card-full.flex-container-row.justify-center.flex-wrap
+    .burst.card.card-half
+      form(id="burst" action=`/write/${burst._id || ''}` method="POST" class="card card-full justify-center")
+        div.flex-container-column.align-items-center
+          input(type="text" id="burst-title" name="name" class="txt-center title" placeholder="Enter title" value=burst.name)
+        div.flex-container-column.align-items-center.spaced.spaced-top.spaced-md
+          textarea(id="burst-content" name="content")= burst.content
+        div.flex-container-row.justify-center.align-items-center.spaced.spaced-top.spaced-md
+          if burst.genre == 'comedy'
+            input(type="radio" name="genre" value="comedy" checked)
+            | Comedy
+            input(type="radio" name="genre" value="tragedy")
+            | Tragedy
+          if burst.genre == 'tragedy'
+            input(type="radio" name="genre" value="comedy")
+            | Comedy
+            input(type="radio" name="genre" value="tragedy" checked)
+            | Tragedy
+          else if !burst.genre
+            input(type="radio" name="genre" value="comedy")
+            | Comedy
+            input(type="radio" name="genre" value="tragedy")
+            | Tragedy
+        div.flex-container-column.align-items-center.spaced.spaced-top.spaced-lg
+          input(type="submit" value="Save" class="button")

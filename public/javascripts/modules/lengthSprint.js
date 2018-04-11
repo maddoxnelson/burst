@@ -1,18 +1,23 @@
-import submitForm from './sprintHelpers';
+import { submitForm, validate } from './sprintHelpers';
+
+console.log(validate)
 
 function checkWordCount(el) {
   return el.value.split(' ').length - 1;
 }
 
 function runSprint() {
-  const contentInput = document.querySelector('#burst-content');
-  const wordLimit = parseInt(this.dataset.value);
-  const numberWords = contentInput.addEventListener('keyup', (e) => {
+  if (validate()) {
+    console.log('running!')
+    const contentInput = document.querySelector('#burst-content');
+    const wordLimit = parseInt(this.dataset.value);
+    const numberWords = contentInput.addEventListener('keyup', (e) => {
 
-    if (checkWordCount(e.target) > wordLimit) {
-      submitForm();
-    }
-  });
+      if (checkWordCount(e.target) > wordLimit) {
+        submitForm();
+      }
+    });
+  }
 }
 
 function init() {
