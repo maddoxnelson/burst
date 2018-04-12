@@ -1,5 +1,8 @@
 mixin burstForm(burst = {})
   .card-wrapper.card.card-full.flex-container-row.justify-center.flex-wrap
+    button#prompt Prompt me!
+    div#prompt-text
+  .card-wrapper.card.card-full.flex-container-row.justify-center.flex-wrap
     .burst.card.card-half
       form(id="burst" action=`/write/${burst._id || ''}` method="POST" class="card card-full justify-center")
         div.flex-container-column.align-items-center
