@@ -1,14 +1,11 @@
 import { submitForm, validate } from './sprintHelpers';
 
-console.log(validate)
-
 function checkWordCount(el) {
   return el.value.split(' ').length - 1;
 }
 
 function runSprint() {
   if (validate()) {
-    console.log('running!')
     const contentInput = document.querySelector('#burst-content');
     const wordLimit = parseInt(this.dataset.value);
     const numberWords = contentInput.addEventListener('keyup', (e) => {
