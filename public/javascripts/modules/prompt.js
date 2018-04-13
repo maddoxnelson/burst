@@ -20,5 +20,8 @@ function fetchPrompts() {
 export function prompt() {
   const promptBtn = document.querySelector('#prompt');
 
-  promptBtn.addEventListener('click', setPrompt);
+  if (promptBtn) {
+    promptBtn.addEventListener('click', setPrompt);
+  }
+
 };

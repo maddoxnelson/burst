@@ -6,19 +6,23 @@ include ../mixins/_burstForm
 
 block content
   .inner
-    h1= title
-  .inner.flex-container-row.justify-space-around
+    h1.txt-center.txt-light-green= title
+    div.txt-light-green.txt-center.big-font.spaced.spaced-bottom.spaced-lg Choose a genre and title before selecting a word count.
+  div#length.inner.flex-container-row.justify-space-around
     .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
-      ol
-        li Pick a length
+      ol.flex-container-column.align-items-center
+        li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm Pick a length
+        li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm
           +button('100', 'words', 'length-sprint')
+        li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm 
           +button('500', 'words', 'length-sprint')
+        li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm
           +button('1000', 'words', 'length-sprint')
-    .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
+    //-.burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
       +wordCounter()
   .inner
     .card-wrapper.card-full.flex-container-row.justify-space-between.flex-wrap
-      .burst.card.card-full.spaced.spaced-top.spaced-lg
-        div.flex-container-row.justify-center
+      .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
+        div.flex-container-column.justify-center
           //- TODO from will need to be modified to work perfectly with a sprint
           +burstForm()

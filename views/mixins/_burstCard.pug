@@ -10,5 +10,7 @@ mixin burstCard(burst = {})
     //- pre= h.dump(burst)
     a(class="unstyled" href=`burst/${burst.slug}`)
       each line, i in h.processNewLines(burst.content)
-        if i < 3
+        if i < 2
           p= line
+        if i === 4
+          p.flex-container-row.justify-center.txt-dark-green More...

@@ -4,6 +4,10 @@ function checkWordCount(el) {
   return el.value.split(' ').length - 1;
 }
 
+function hideBox(el) {
+  el.classList.add('hidden');
+}
+
 function runSprint() {
   if (validate()) {
     const contentInput = document.querySelector('#burst-content');
@@ -14,6 +18,8 @@ function runSprint() {
         submitForm();
       }
     });
+
+    hideBox(document.getElementById('length'))
   }
 }
 

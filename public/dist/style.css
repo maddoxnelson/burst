@@ -15,7 +15,14 @@ a {
 
 textarea {
   width: 100%;
-  padding: 10px; }
+  padding: 10px;
+  outline: 0; }
+
+ol,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
 
 input,
 textarea {
@@ -51,13 +58,6 @@ textarea {
 .card-wrapper .card:nth-last-child(1) {
   -ms-flex-item-align: start;
       align-self: flex-start; }
-
-body {
-  font-family: "Abel", sans-serif;
-  background: #4f4f4c; }
-
-.inner {
-  padding: 0 20px; }
 
 .flex-container-row {
   display: -webkit-box;
@@ -96,9 +96,23 @@ body {
       -ms-flex-align: center;
           align-items: center; }
 
+.align-self-center {
+  -ms-flex-item-align: center;
+      align-self: center; }
+
 .flex-wrap {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
+
+body {
+  font-family: "Abel", sans-serif;
+  background: #4f4f4c; }
+
+.inner {
+  padding: 0 20px; }
+
+.hidden {
+  display: none; }
 
 .spaced.spaced-top.spaced-lg {
   margin-top: 20px; }
@@ -109,12 +123,53 @@ body {
 .spaced.spaced-top.spaced-sm {
   margin-top: 10px; }
 
+.spaced.spaced-bottom.spaced-lg {
+  margin-bottom: 20px; }
+
+.spaced.spaced-bottom.spaced-md {
+  margin-bottom: 15px; }
+
+.spaced.spaced-bottom.spaced-sm {
+  margin-bottom: 10px; }
+
+.spaced.spaced-right.spaced-lg {
+  margin-right: 20px; }
+
+.spaced.spaced-right.spaced-md {
+  margin-right: 15px; }
+
+.spaced.spaced-right.spaced-sm {
+  margin-right: 10px; }
+
 .txt-center {
   text-align: center; }
+
+.txt-white {
+  color: #fff; }
+
+.txt-light-green {
+  color: #e3edd9; }
+
+.txt-dark-green {
+  color: #4f4f4c; }
+
+.big-font {
+  font-size: 22px; }
 
 a.unstyled {
   text-decoration: none;
   color: #000; }
+
+button {
+  font-size: 20px;
+  font-family: "Abel";
+  color: #e3edd9;
+  padding: 5px;
+  background: #598c2c;
+  border: 0;
+  border-radius: 5px; }
+  button:hover {
+    background: #4f4f4c; }
 
 nav {
   background: #4f4f4c; }

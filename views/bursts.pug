@@ -4,7 +4,9 @@ include mixins/_burstCard
 
 block content
   .inner
-    h1= title
-    .card-wrapper.flex-container-row.justify-space-between.flex-wrap
+    div.flex-container-column.align-items-center.txt-light-green
+      h1= title
+      div.big-font.spaced.spaced-bottom.spaced-lg Burst is a site for writing flash fiction.
+    .card-wrapper.flex-container-row.justify-space-between.flex-wrap.spaced.spaced-top.spaced-lg
       each burst in bursts
         +burstCard(burst)

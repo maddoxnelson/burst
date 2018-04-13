@@ -9,5 +9,5 @@ exports.chooseSprintMode = (req, res) => {
 exports.displayMode = (req, res) => {
   const mode = req.params.mode;
 
-  res.render(`sprints/${req.params.mode}`, { title: mode })
+  res.render(`sprints/${req.params.mode}`, { title: `Word Sprint: Write to ${mode}!` })
 }

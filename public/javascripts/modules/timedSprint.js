@@ -4,6 +4,10 @@ function strPadLeft(string, pad, length) {
   return (new Array(length+1).join(pad)+string).slice(-length);
 }
 
+function hideBox(el) {
+  el.classList.add('hidden');
+}
+
 function updateClock(time) {
   const countdownClock = document.querySelector('#clock');
   let min = Math.floor(time / 60);
@@ -33,6 +37,7 @@ function countdown(duration = 5) {
 
 async function runSprint() {
   if (validate()) {
+    hideBox(document.getElementById('timed'))
     const time = parseInt(this.dataset.value) * 60;
     console.log('Sprint starting in 5 seconds...')
     await countdown(5);
@@ -43,7 +48,7 @@ async function runSprint() {
     submitForm();
     console.log('Display stats on the next page')
   } else {
-    
+
   }
 }
 

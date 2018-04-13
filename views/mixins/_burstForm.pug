@@ -1,9 +1,9 @@
 mixin burstForm(burst = {})
-  .card-wrapper.card.card-full.flex-container-row.justify-center.flex-wrap
+  .card-wrapper.card.card-full.flex-container-column.justify-center.flex-wrap
     button#prompt Prompt me!
-    div#prompt-text
+    div#prompt-text.spaced.spaced-top.spaced-lg.txt-center
   .card-wrapper.card.card-full.flex-container-row.justify-center.flex-wrap
-    .burst.card.card-half
+    .burst.card
       form(id="burst" action=`/write/${burst._id || ''}` method="POST" class="card card-full justify-center")
         div.flex-container-column.align-items-center
           input(type="text" id="burst-title" name="name" class="txt-center title" placeholder="Enter title" value=burst.name)

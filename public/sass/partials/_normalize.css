@@ -18,6 +18,14 @@ a {
 textarea {
   width: 100%;
   padding:10px;
+  outline: 0;
+}
+
+ol,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 input,

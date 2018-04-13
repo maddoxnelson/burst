@@ -887,33 +887,34 @@ var runSprint = function () {
         switch (_context.prev = _context.next) {
           case 0:
             if (!(0, _sprintHelpers.validate)()) {
-              _context.next = 15;
+              _context.next = 16;
               break;
             }
 
+            hideBox(document.getElementById('timed'));
             time = parseInt(this.dataset.value) * 60;
 
             console.log('Sprint starting in 5 seconds...');
-            _context.next = 5;
+            _context.next = 6;
             return countdown(5);
 
-          case 5:
+          case 6:
             console.log(this.dataset.value + ' ' + this.dataset.unit + ' sprint starting!!');
-            _context.next = 8;
+            _context.next = 9;
             return countdown(time);
 
-          case 8:
+          case 9:
             console.log('SPRINT COMPLETE! Take 15 seconds to finish your current sentence.');
-            _context.next = 11;
+            _context.next = 12;
             return countdown(15);
 
-          case 11:
+          case 12:
             (0, _sprintHelpers.submitForm)();
             console.log('Display stats on the next page');
-            _context.next = 15;
+            _context.next = 16;
             break;
 
-          case 15:
+          case 16:
           case 'end':
             return _context.stop();
         }
@@ -934,6 +935,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function strPadLeft(string, pad, length) {
   return (new Array(length + 1).join(pad) + string).slice(-length);
+}
+
+function hideBox(el) {
+  el.classList.add('hidden');
 }
 
 function updateClock(time) {
@@ -993,15 +998,16 @@ var _sprintHelpers = __webpack_require__(0);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-console.log(_sprintHelpers.validate);
-
 function checkWordCount(el) {
   return el.value.split(' ').length - 1;
 }
 
+function hideBox(el) {
+  el.classList.add('hidden');
+}
+
 function runSprint() {
   if ((0, _sprintHelpers.validate)()) {
-    console.log('running!');
     var contentInput = document.querySelector('#burst-content');
     var wordLimit = parseInt(this.dataset.value);
     var numberWords = contentInput.addEventListener('keyup', function (e) {
@@ -1010,6 +1016,8 @@ function runSprint() {
         (0, _sprintHelpers.submitForm)();
       }
     });
+
+    hideBox(document.getElementById('length'));
   }
 }
 
@@ -1133,7 +1141,9 @@ function fetchPrompts() {
 function prompt() {
   var promptBtn = document.querySelector('#prompt');
 
-  promptBtn.addEventListener('click', setPrompt);
+  if (promptBtn) {
+    promptBtn.addEventListener('click', setPrompt);
+  }
 };
 
 /***/ }),
