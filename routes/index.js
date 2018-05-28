@@ -1,31 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const burstController = require('../controllers/burstController');
+const bitController = require('../controllers/bitController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const userDashController = require('../controllers/userDashController');
 const wordSprintController = require('../controllers/wordSprintController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 module.exports = router;
 
-router.get('/', catchErrors(burstController.getBursts));
-router.get('/write', burstController.addBurst);
+router.get('/', catchErrors(bitController.getBits));
+router.get('/write', bitController.addBit);
 
-router.get('/bursts/:id/edit',catchErrors(burstController.editBurst));
+router.get('/bits/:id/edit',catchErrors(bitController.editBit));
 
-router.get(`/burst/:slug`, catchErrors(burstController.getBurstBySlug));
+router.get(`/bit/:slug`, catchErrors(bitController.getBitBySlug));
 
 router.post('/write',
-  catchErrors(burstController.createBurst)
+  catchErrors(bitController.createBit)
 );
 
 router.post('/write/:id',
-  catchErrors(burstController.updateBurst)
+  catchErrors(bitController.updateBit)
 );
 
 // Genres
 router.get('/genre/:genre',
-  catchErrors(burstController.showBurstsByGenre)
+  catchErrors(bitController.showBitsByGenre)
 )
 
 // Word sprints
@@ -41,7 +42,8 @@ router.get('/sprint/:mode',
 // Authors
 router.get('/author/:slug',
   authController.isLoggedIn,
-  catchErrors(burstController.getBurstsByAuthor)
+  catchErrors(bitController.getBitsByAuthor),
+  catchErrors(userDashController.showUserDash)
 );
 
 // User and authentication routes

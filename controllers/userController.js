@@ -3,7 +3,7 @@ const User = mongoose.model("User");
 const promisify = require('es6-promisify');
 
 exports.loginForm = (req, res) => {
-  res.render('login', { title: 'Log in to Burst!' });
+  res.render('login', { title: 'Log in to Bit!' });
 }
 
 exports.registerForm = (req, res) => {

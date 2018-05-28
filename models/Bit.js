@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 
-const burstSchema = new mongoose.Schema({
+const bitSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: 'Please enter a Burst title.'
+    required: 'Please enter a Bit title.'
   },
   slug: String,
   author: {
@@ -21,25 +21,31 @@ const burstSchema = new mongoose.Schema({
   genre: {
     type: String,
     required: 'Choose a genre.'
+  },
+  word_count: {
+    type: Number
   }
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }
 });
 
-burstSchema.pre('save', async function(next) {
+bitSchema.pre('save', async function(next) {
   if (!this.isModified('name')) {
     console.log('checking for modification... finding an identical one')
     return next(); // move along, don't redo the slug if name hasn't changed
   }
+  this.word_count = Number(this.content.split(' ').length)
+
+  console.log('this:', this)
   // slugifies the name
   this.slug = slug(this.name);
   // find other stores with similar slug or slug-1
   const slugRegex = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
-  const burstsWithSlug = await this.constructor.find({ slug: slugRegex });
+  const bitsWithSlug = await this.constructor.find({ slug: slugRegex });
 
-  if(burstsWithSlug.length) {
-    this.slug = `${this.slug}-${burstsWithSlug.length + 1}`;
+  if(bitsWithSlug.length) {
+    this.slug = `${this.slug}-${bitsWithSlug.length + 1}`;
   }
 
   // moves things along to the next part
@@ -52,7 +58,7 @@ function autopopulate(next) {
   next()
 };
 
-burstSchema.pre('find', autopopulate);
-burstSchema.pre('findOne', autopopulate);
+bitSchema.pre('find', autopopulate);
+bitSchema.pre('findOne', autopopulate);
 
-module.exports = mongoose.model('Burst', burstSchema);
+module.exports = mongoose.model('Bit', bitSchema);

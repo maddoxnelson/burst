@@ -2,14 +2,14 @@ extends ../layout
 
 include ../mixins/_button
 include ../mixins/_clock
-include ../mixins/_burstForm
+include ../mixins/_bitForm
 
 block content
   .inner
     h1.txt-center.txt-light-green= title
     div.txt-light-green.txt-center.big-font.spaced.spaced-bottom.spaced-lg Choose a genre and title before selecting a time.
   .inner.flex-container-row.justify-space-around
-    div#timed.burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap
+    div#timed.bit.card.card-wrapper.flex-container-row.justify-center.flex-wrap
       ol.flex-container-column.align-items-center
         li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm Pick a time
         li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm 
@@ -18,11 +18,11 @@ block content
           +button('5', 'minutes', 'timed-sprint')
         li.flex-container-row.justify-center.spaced.spaced-bottom.spaced-sm
           +button('10', 'minutes', 'timed-sprint')
-    .burst.card.card-wrapper.flex-container-row.justify-center.flex-wrap.align-self-center
+    .bit.card.card-wrapper.flex-container-row.justify-center.flex-wrap.align-self-center
       +clock()
   .inner
     .card-wrapper.card-full.flex-container-row.justify-space-between.flex-wrap
-      .burst.card.card-full.shaded.spaced.spaced-top.spaced-lg
+      .bit.card.card-full.shaded.spaced.spaced-top.spaced-lg
         div.flex-container-column.justify-center
           //- TODO from will need to be modified to work perfectly with a sprint
-          +burstForm()
+          +bitForm()

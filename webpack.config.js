@@ -34,7 +34,7 @@ const uglify = new webpack.optimize.UglifyJsPlugin({
 
 const config = {
   entry: {
-    App: './public/javascripts/burst.js'
+    App: './public/javascripts/bit.js'
   },
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),

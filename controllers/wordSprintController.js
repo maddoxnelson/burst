@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Burst = mongoose.model("Burst");
+const Bit = mongoose.model("Bit");
 const User = mongoose.model("User");
 
 exports.chooseSprintMode = (req, res) => {

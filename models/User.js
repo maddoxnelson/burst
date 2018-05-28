@@ -33,16 +33,12 @@ userSchema.virtual('gravatar').get(function() {
   resetPasswordExpires: Date,`
 });
 
-userSchema.statics.getBurstsFromAuthor = function() {
-  return this.aggregate([
-    // Lookup bursts from authors
-    {
-      $lookup: {
-        from: 'author', localField: '_id', foreignField: 'burst', as: 'authors' }
-    },
-    // limit to at most 10
-  ]);
-};
+// find reviews where stores _id equals the review's store
+userSchema.virtual('stats', {
+  ref: 'UserStats', // what model to link?
+  localField: '_id', // which field on the user
+  foreignField: 'user' // which field on the review
+});
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);

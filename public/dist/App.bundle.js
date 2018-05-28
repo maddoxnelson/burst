@@ -79,7 +79,7 @@ exports.validate = validate;
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function submitForm() {
-  var form = document.querySelector('#burst');
+  var form = document.querySelector('#bit');
   form.submit();
 }
 
@@ -88,7 +88,7 @@ function validate() {
   var genreChecked = genreBtns.filter(function (btn) {
     return btn.checked;
   }).length > 0;
-  var title = document.querySelector('#burst-title').value.length > 0;
+  var title = document.querySelector('#bit-title').value.length > 0;
   return title && genreChecked;
 }
 
@@ -1008,7 +1008,7 @@ function hideBox(el) {
 
 function runSprint() {
   if ((0, _sprintHelpers.validate)()) {
-    var contentInput = document.querySelector('#burst-content');
+    var contentInput = document.querySelector('#bit-content');
     var wordLimit = parseInt(this.dataset.value);
     var numberWords = contentInput.addEventListener('keyup', function (e) {
 

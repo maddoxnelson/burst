@@ -1,8 +1,8 @@
 {
-  "name": "burst",
+  "name": "wrabbit",
   "version": "0.0.1",
-  "description": "Node app allowing users to write, edit and share pieces of flash fiction.",
-  "repository": "https://github.com/maddoxnelson/burst",
+  "description": "Node app that encourages writers to build good writing habits.",
+  "repository": "https://github.com/maddoxnelson/wrabbit",
   "author": "Matt Nelson",
   "license": "MIT",
   "scripts": {

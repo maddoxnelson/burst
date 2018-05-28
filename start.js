@@ -12,8 +12,9 @@ mongoose.connection.on('error', (err) => {
 });
 
 // import models here
-require('./models/Burst');
+require('./models/Bit');
 require('./models/User');
+require('./models/UserStats');
 
 // fire it up
 const app = require('./app');

@@ -10,7 +10,7 @@ function hideBox(el) {
 
 function runSprint() {
   if (validate()) {
-    const contentInput = document.querySelector('#burst-content');
+    const contentInput = document.querySelector('#bit-content');
     const wordLimit = parseInt(this.dataset.value);
     const numberWords = contentInput.addEventListener('keyup', (e) => {
 
